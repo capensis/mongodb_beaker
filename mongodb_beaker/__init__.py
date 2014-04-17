@@ -245,8 +245,7 @@ class MongoDBNamespaceManager(NamespaceManager):
 
         def _create_mongo_conn():
             host_uri = 'mongodb://'
-            for x in host_list:
-                host_uri += '%s:%s' % x
+            host_uri += ','.join(['{0}:{1}'.format(*x) for x in host_list])
             log.info("Host URI: %s" % host_uri)
             conn = Connection(host_uri, slave_okay=options.get('slaveok', False))
 
