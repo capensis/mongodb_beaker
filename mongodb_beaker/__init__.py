@@ -252,7 +252,7 @@ class MongoDBNamespaceManager(NamespaceManager):
             db = conn[database]
 
             if username:
-                log.info("Attempting to authenticate %s/%s " % (username, password))
+                log.debug("Attempting to authenticate %s/%s " % (username, password))
                 if not db.authenticate(username, password):
                     raise InvalidCacheBackendError('Cannot authenticate to '
                                                    ' MongoDB.')
